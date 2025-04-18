@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/DENFNC/ToDoList/internal/domain/models"
-	"github.com/gin-gonic/gin"
+	"github.com/gofiber/fiber/v3"
 )
 
 type TodoService interface {
@@ -33,17 +33,17 @@ func NewTodoHandler(service TodoService) *TodoHandler {
 	}
 }
 
-func (h *TodoHandler) Register(rg *gin.RouterGroup) {
+func (h *TodoHandler) Register(rg *fiber.Group) {
 	todoRoute := rg.Group("/api/v1/tasks")
 	{
-		todoRoute.POST("/:id")
-		todoRoute.GET("/:id")
-		todoRoute.PUT("/:id")
-		todoRoute.DELETE("/:id")
+		todoRoute.Post("/:id", h.CreateTask)
+		todoRoute.Get("/:id", h.GetTask)
+		todoRoute.Put("/:id", h.UpdateTask)
+		todoRoute.Delete("/:id", h.DeleteTask)
 	}
 }
 
-func (h *TodoHandler) CreateTask(ctx *gin.Context) { panic("implement me") }
-func (h *TodoHandler) GetTask(ctx *gin.Context)    { panic("implement me") }
-func (h *TodoHandler) UpdateTask(ctx *gin.Context) { panic("implement me") }
-func (h *TodoHandler) DeleteTask(ctx *gin.Context) { panic("implement me") }
+func (h *TodoHandler) CreateTask(ctx fiber.Ctx) error { panic("implement me") }
+func (h *TodoHandler) GetTask(ctx fiber.Ctx) error    { panic("implement me") }
+func (h *TodoHandler) UpdateTask(ctx fiber.Ctx) error { panic("implement me") }
+func (h *TodoHandler) DeleteTask(ctx fiber.Ctx) error { panic("implement me") }
