@@ -36,7 +36,7 @@ func NewTodoHandler(service TodoService) *TodoHandler {
 func (h *TodoHandler) Register(rg *gin.RouterGroup) {
 	todoRoute := rg.Group("/api/v1/tasks")
 	{
-		todoRoute.POST("/:")
+		todoRoute.POST("/:id")
 		todoRoute.GET("/:id")
 		todoRoute.PUT("/:id")
 		todoRoute.DELETE("/:id")
